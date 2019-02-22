@@ -50,7 +50,7 @@ public class Event {
 	}
 
 	public void setDate(Date date) {
-		this.date = date;
+		this.date = new Date(date.getTime());
 	}
 
 	public int getEventID() {
