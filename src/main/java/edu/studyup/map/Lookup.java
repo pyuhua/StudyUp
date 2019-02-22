@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,7 +44,7 @@ public class Lookup {
 			String urlString = "https://nominatim.openstreetmap.org/search?q=" + URLEncoder.encode(query, "UTF-8")
 					+ "&format=json";
 			URL url = new URL(urlString);
-			try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
+			try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), Charset.defaultCharset()))) {
 				StringBuilder sb = new StringBuilder();
 				int cp;
 				while ((cp = in.read()) != -1) {
